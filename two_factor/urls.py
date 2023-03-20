@@ -1,9 +1,6 @@
 from django.apps.registry import apps
 from django.urls import include, path
 
-from two_factor.plugins.phonenumber.views import (
-    PhoneDeleteView, PhoneSetupView,
-)
 from two_factor.views import (
     BackupTokensView, DisableView, LoginView, ProfileView, QRGeneratorView,
     SetupCompleteView, SetupView,
@@ -34,16 +31,6 @@ core = [
         'account/two_factor/backup/tokens/',
         BackupTokensView.as_view(),
         name='backup_tokens',
-    ),
-    path(
-        'account/two_factor/backup/phone/register/',
-        PhoneSetupView.as_view(),
-        name='phone_create',
-    ),
-    path(
-        'account/two_factor/backup/phone/unregister/<int:pk>/',
-        PhoneDeleteView.as_view(),
-        name='phone_delete',
     ),
 ]
 
